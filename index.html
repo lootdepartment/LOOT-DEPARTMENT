@@ -23,11 +23,55 @@ section{padding:105px 0}.light{background:var(--ivory);color:var(--ink)}.section
 footer{background:#080b10;border-top:1px solid var(--line);padding:36px 0;color:#89847b;font-size:9px;letter-spacing:.12em}.foot{display:flex;justify-content:space-between;align-items:center;gap:22px;flex-wrap:wrap}.foot strong{color:var(--ivory);letter-spacing:.25em}.footlinks{display:flex;gap:22px;text-transform:uppercase}.footlinks a:hover{color:var(--gold)}
 @media(max-width:800px){.navlinks{display:none}.hero{min-height:720px}.hero-art{width:75vw;right:-12%;opacity:.45}.intro-grid,.collection-layout{grid-template-columns:1fr;gap:35px}.story-grid{grid-template-columns:1fr}.story{min-height:0}.section-head{display:block}.section-head .body{margin-top:20px}}
 @media(max-width:560px){.wrap{width:calc(100% - 36px)}nav{height:72px}.brand{font-size:10px;letter-spacing:.17em}.nav-cta{display:none}.hero-copy{padding:145px 0 110px}h1{font-size:68px}.actions .btn{width:100%}section{padding:75px 0}.collection-visual{min-height:300px}.foot{align-items:flex-start;flex-direction:column}}
+
+.mint-status{position:relative;overflow:hidden;padding:58px 0 64px;background:linear-gradient(115deg,#171126 0%,#231b3c 55%,#100d19 100%);border-top:1px solid rgba(206,90,30,.35);border-bottom:1px solid rgba(227,153,10,.28)}
+.mint-status:before{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse at 12% 50%,rgba(206,90,30,.14),transparent 38%),linear-gradient(90deg,transparent 49.9%,rgba(227,153,10,.045) 50%,transparent 50.1%)}
+.mint-inner{position:relative;z-index:1;display:grid;grid-template-columns:1fr 1.15fr;gap:58px;align-items:center}
+.mint-heading{font:500 clamp(39px,5vw,58px)/.94 'Cormorant Garamond',serif;margin:13px 0 12px;color:var(--ivory)}
+.mint-heading em{color:var(--gold);font-weight:400}
+.mint-sub{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:#b9afc9}
+.mint-main{display:flex;align-items:baseline;gap:13px;margin-bottom:7px}
+.mint-count{font:600 clamp(44px,6vw,68px)/1 'Cormorant Garamond',serif;color:#fff}
+.mint-count-label{font-size:9px;letter-spacing:.22em;color:#d8c7ec;text-transform:uppercase}
+.mint-percent{margin-left:auto;font:500 25px 'Cormorant Garamond',serif;color:#e7c8ff}
+.mint-track{height:13px;padding:2px;border:1px solid rgba(210,177,244,.35);background:#100b1a;box-shadow:inset 0 2px 8px rgba(0,0,0,.6);overflow:hidden}
+.mint-fill{height:100%;width:8%;background:linear-gradient(90deg,#6b3ca0,#a66be0 58%,#d8b2ff);box-shadow:0 0 18px rgba(166,107,224,.55);position:relative}
+.mint-fill:after{content:"";position:absolute;right:0;top:0;bottom:0;width:2px;background:#f2dcff;box-shadow:0 0 9px #d8b2ff}
+.mint-metrics{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:23px}
+.mint-metric{padding:15px 17px;border:1px solid rgba(210,177,244,.18);background:rgba(7,5,13,.28)}
+.mint-value{display:block;font:500 27px/1.1 'Cormorant Garamond',serif;color:#f3e9ff}
+.mint-label{display:block;margin-top:6px;font-size:8px;letter-spacing:.2em;text-transform:uppercase;color:#b6a8c9}
+@media(max-width:760px){.mint-status{padding:48px 0}.mint-inner{grid-template-columns:1fr;gap:26px}.mint-metrics{margin-top:18px}}
+
 </style></head>
 <body>
 <header><nav class="wrap"><a class="brand" href="index.html"><img class="brand-icon" src="https://raw.githubusercontent.com/lootdepartment/LOOT-DEPARTMENT/main/images/logo.png" alt="LOOT DEPARTMENT logo"> LOOT DEPARTMENT</a><div class="navlinks"><a href="#philosophy">Philosophy</a><a href="history.html">Our story</a><a href="#editorial">Editorial</a><a href="#collection">Collection</a></div><a class="btn nav-cta" href="https://gravemint.io/mint/DEADfJLpRkbBuXEWWpEBXbzV31NE5DdAzmmibp7WVxow" target="_blank" rel="noopener">Enter the collection ↗</a></nav></header>
 <main>
 <section class="hero"><div class="wrap"><div class="hero-copy"><div class="eyebrow">A house of rare perspective</div><h1>The art of<br><em>collecting.</em><br>The power of story.</h1><p>An avant-garde collectible house inspired by the worlds of luxury fashion, ancient symbolism and modern culture. Discover objects with character — and the stories that make them unforgettable.</p><div class="actions"><a class="btn" href="https://gravemint.io/mint/DEADfJLpRkbBuXEWWpEBXbzV31NE5DdAzmmibp7WVxow" target="_blank" rel="noopener">Discover the collection ↗</a><a class="btn outline" href="history.html">Enter our story</a></div></div></div><div class="hero-caption">Collect culture · Own a story · Est. in ambition</div></section>
+
+<section class="mint-status" id="mint-status" aria-labelledby="mint-heading">
+ <div class="wrap mint-inner">
+  <div>
+   <div class="kicker">The collection / Live mint status</div>
+   <h2 class="mint-heading" id="mint-heading">A rare find.<br><em>Your next story.</em></h2>
+   <p class="mint-sub">The LOOT DEPARTMENT collection is open on Gravemint.</p>
+  </div>
+  <div class="mint-progress-panel">
+   <div class="mint-main">
+    <span class="mint-count">9 / 106</span>
+    <span class="mint-count-label">Minted</span>
+    <span class="mint-percent">8.0%</span>
+   </div>
+   <div class="mint-track" role="progressbar" aria-label="NFT mint progress" aria-valuemin="0" aria-valuemax="106" aria-valuenow="9" aria-valuetext="9 of 106 minted, displayed progress 8.0%">
+    <div class="mint-fill"></div>
+   </div>
+   <div class="mint-metrics">
+    <div class="mint-metric"><span class="mint-value">0.100 SOL</span><span class="mint-label">Mint price</span></div>
+    <div class="mint-metric"><span class="mint-value">5.00%</span><span class="mint-label">Royalty</span></div>
+   </div>
+  </div>
+ </div>
+</section>
 <section class="trailer" id="launch-trailer" aria-labelledby="trailer-heading"><div class="wrap"><div class="trailer-head"><div><div class="kicker">The launch film / Gravemint</div><h2 class="trailer-title" id="trailer-heading">Enter the world of <em>LOOT.</em></h2></div><p class="trailer-note">A first look inside the department. Watch the launch trailer and discover the collection on Gravemint.</p></div><div class="trailer-frame"><video class="trailer-video" controls autoplay muted loop playsinline preload="metadata" poster="https://raw.githubusercontent.com/lootdepartment/LOOT-DEPARTMENT/main/LOOT%20DEPT%20BANNER.jpg" aria-label="LOOT DEPARTMENT on Gravemint launch trailer"><source src="https://raw.githubusercontent.com/lootdepartment/LOOT-DEPARTMENT/main/videos/LOOT%20DEPARTMENT%20ON%20GRAVEMEINT.mp4" type="video/mp4">Your browser does not support HTML5 video. <a href="https://raw.githubusercontent.com/lootdepartment/LOOT-DEPARTMENT/main/videos/LOOT%20DEPARTMENT%20ON%20GRAVEMEINT.mp4">Watch the LOOT DEPARTMENT launch trailer</a>.</video></div><div class="trailer-meta"><span><strong>LOOT DEPARTMENT</strong> · Official launch trailer</span><span>Sound off by default · Controls available</span></div></div></section>
 <div class="marquee">A different kind of treasure. A different kind of department.</div>
 <section class="light" id="philosophy"><div class="wrap intro-grid"><div><div class="kicker">01 / The philosophy</div><h2 class="heading">Beyond the object.<br>Into the story.</h2><p class="intro-copy">We believe the most coveted things carry something deeper: <strong>identity, imagination and meaning.</strong></p><p class="body">LOOT DEPARTMENT brings the visual language of luxury fashion and the energy of collectible culture into one considered world. Every piece is an invitation to discover, express and connect.</p><a class="btn" href="history.html">Discover our point of view</a></div><div class="seal-card"><div class="seal-symbol">𓂀</div></div></div></section>
