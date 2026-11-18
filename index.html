@@ -1,166 +1,33 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#090909">
-  <meta name="description" content="LOOT DEPARTMENT — collect the rare, flex your finds, unlock the unexpected. Digital collectibles with a real-world mindset.">
-  <title>LOOT DEPARTMENT — Collect. Flex. Unlock. Loot.</title>
-  <style>
-    :root{color-scheme:dark;--bg:#090909;--panel:#11110f;--gold:#e9bd63;--gold2:#a8782c;--muted:#a7a39a;--line:rgba(233,189,99,.2);--white:#f5f1e8}
-    *{box-sizing:border-box}
-    html{scroll-behavior:smooth}
-    body{margin:0;background:var(--bg);color:var(--white);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.5}
-    a{color:inherit;text-decoration:none}
-    .wrap{width:min(1160px,calc(100% - 44px));margin:auto}
-    .topline{height:3px;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
-    header{position:sticky;top:0;z-index:10;background:rgba(9,9,9,.82);backdrop-filter:blur(16px);border-bottom:1px solid rgba(255,255,255,.07)}
-    nav{height:76px;display:flex;align-items:center;justify-content:space-between;gap:24px}
-    .brand{display:flex;align-items:center;gap:12px;font-size:13px;font-weight:900;letter-spacing:.18em}
-    .mark{width:34px;height:34px;border:1px solid var(--gold);display:grid;place-items:center;color:var(--gold);font-size:17px;transform:rotate(45deg)}
-    .mark span{transform:rotate(-45deg)}
-    .navlinks{display:flex;gap:28px;color:#c6c0b3;font-size:12px;text-transform:uppercase;letter-spacing:.13em}
-    .navlinks a:hover{color:var(--gold)}
-    .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:14px 20px;border:1px solid var(--gold);font-size:11px;font-weight:900;letter-spacing:.15em;text-transform:uppercase;transition:.2s}
-    .btn.primary{background:var(--gold);color:#15110a}
-    .btn:hover{transform:translateY(-2px);box-shadow:0 10px 30px rgba(233,189,99,.14)}
-    .hero{min-height:690px;display:grid;align-items:center;position:relative;overflow:hidden;border-bottom:1px solid var(--line);background:radial-gradient(ellipse at 76% 42%,rgba(169,119,44,.18),transparent 38%),radial-gradient(ellipse at 18% 85%,rgba(233,189,99,.07),transparent 32%)}
-    .hero:after{content:"";position:absolute;inset:0;pointer-events:none;opacity:.14;background-image:linear-gradient(rgba(255,255,255,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.06) 1px,transparent 1px);background-size:54px 54px;mask-image:linear-gradient(90deg,black,transparent 90%)}
-    .hero-inner{position:relative;z-index:1;padding:100px 0 112px;max-width:760px}
-    .eyebrow{color:var(--gold);font-size:10px;font-weight:900;letter-spacing:.28em;text-transform:uppercase;display:flex;align-items:center;gap:12px}
-    .eyebrow:before{content:"";width:34px;height:1px;background:var(--gold)}
-    h1{font-size:clamp(56px,10vw,120px);line-height:.88;letter-spacing:-.075em;margin:28px 0 24px;font-weight:950}
-    h1 span{display:block;color:var(--gold);text-shadow:0 0 55px rgba(233,189,99,.12)}
-    .hero p{max-width:520px;color:#bcb6aa;font-size:17px;line-height:1.8;margin:0 0 34px}
-    .actions{display:flex;gap:12px;flex-wrap:wrap}
-    .hero-stamp{position:absolute;right:5%;top:50%;transform:translateY(-50%) rotate(10deg);width:min(31vw,330px);aspect-ratio:1;border:1px solid rgba(233,189,99,.34);border-radius:50%;display:grid;place-items:center;color:rgba(233,189,99,.8);text-align:center;box-shadow:0 0 0 16px rgba(233,189,99,.025),0 0 0 34px rgba(233,189,99,.018)}
-    .hero-stamp:before,.hero-stamp:after{content:"";position:absolute;inset:12%;border:1px dashed rgba(233,189,99,.28);border-radius:50%}
-    .hero-stamp:after{inset:27%;border-style:solid}
-    .stamptext{position:relative;z-index:1;font-size:clamp(13px,2vw,22px);font-weight:950;letter-spacing:.15em;line-height:1.5}
-    .stamptext small{display:block;font-size:9px;letter-spacing:.3em;color:#bba16f}
-    section{padding:105px 0}
-    .section-head{display:flex;justify-content:space-between;align-items:end;gap:28px;margin-bottom:42px}
-    .kicker{font-size:10px;letter-spacing:.25em;text-transform:uppercase;color:var(--gold);font-weight:900}
-    h2{font-size:clamp(34px,5vw,58px);letter-spacing:-.055em;line-height:1;margin:13px 0 0}
-    .section-head p{max-width:390px;color:var(--muted);font-size:14px;margin:0}
-    .steps{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--line)}
-    .step{padding:30px 25px;min-height:225px;border-right:1px solid var(--line);position:relative;background:linear-gradient(145deg,rgba(255,255,255,.025),transparent)}
-    .step:last-child{border:0}
-    .num{font-size:11px;color:var(--gold);letter-spacing:.15em}
-    .step h3{font-size:25px;letter-spacing:-.04em;margin:44px 0 8px}
-    .step p{font-size:13px;color:var(--muted);margin:0;line-height:1.7}
-    .collection{background:linear-gradient(180deg,#0c0c0b,#11100e 50%,#0c0c0b);border-top:1px solid rgba(255,255,255,.04);border-bottom:1px solid rgba(255,255,255,.04)}
-    .collect-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:18px}
-    .feature{min-height:370px;padding:36px;position:relative;overflow:hidden;border:1px solid var(--line);background:radial-gradient(ellipse at 75% 38%,rgba(233,189,99,.17),transparent 42%),#12110e}
-    .feature:after{content:"LD";position:absolute;right:-12px;bottom:-80px;font-size:260px;line-height:1;font-weight:950;letter-spacing:-.1em;color:rgba(233,189,99,.045)}
-    .feature h3{font-size:clamp(30px,4vw,48px);letter-spacing:-.06em;max-width:440px;margin:20px 0 12px;line-height:1}
-    .feature p{max-width:420px;color:var(--muted);font-size:14px;line-height:1.8}
-    .tag{display:inline-block;border:1px solid var(--line);padding:7px 10px;color:var(--gold);font-size:9px;font-weight:900;letter-spacing:.18em;text-transform:uppercase}
-    .sidecards{display:grid;gap:18px}
-    .mini{padding:28px;border:1px solid rgba(255,255,255,.1);background:#111;display:flex;flex-direction:column;justify-content:space-between;min-height:176px}
-    .mini h3{font-size:22px;margin:14px 0 4px;letter-spacing:-.04em}
-    .mini p{margin:0;color:var(--muted);font-size:13px}
-    .arrow{color:var(--gold);font-size:20px}
-    .reward{position:relative;overflow:hidden;border:1px solid rgba(233,189,99,.3);padding:54px;background:radial-gradient(ellipse at 85% 50%,rgba(145,30,22,.22),transparent 35%),linear-gradient(110deg,#15120e,#0c0b0a)}
-    .reward:after{content:"";position:absolute;right:7%;top:50%;width:190px;height:90px;transform:translateY(-50%);border:2px solid rgba(233,189,99,.18);border-radius:50% 50% 20% 20%;box-shadow:inset 0 -20px rgba(233,189,99,.035),0 0 0 12px rgba(233,189,99,.025)}
-    .reward h2{max-width:600px}
-    .reward p{max-width:620px;color:#bcb6aa;font-size:14px;line-height:1.85}
-    .notice{font-size:11px!important;color:#d6b77b!important;border-left:2px solid var(--gold);padding-left:14px;margin-top:25px}
-    .manifesto{text-align:center;padding:100px 0 110px}
-    .manifesto blockquote{margin:22px auto 0;max-width:850px;font-size:clamp(28px,5vw,54px);font-weight:900;letter-spacing:-.055em;line-height:1.1}
-    .manifesto blockquote span{color:var(--gold)}
-    footer{border-top:1px solid var(--line);padding:28px 0;color:#8d887e;font-size:11px}
-    .foot{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap}
-    .foot strong{color:var(--white);letter-spacing:.14em}
-    .footlinks{display:flex;gap:20px;text-transform:uppercase;letter-spacing:.12em}
-    .footlinks a:hover{color:var(--gold)}
-    @media(max-width:850px){.hero-stamp{right:-8%;opacity:.38;width:280px}.steps{grid-template-columns:repeat(2,1fr)}.step:nth-child(2){border-right:0}.step:nth-child(-n+2){border-bottom:1px solid var(--line)}.collect-grid{grid-template-columns:1fr}.section-head{display:block}.section-head p{margin-top:18px}}
-    @media(max-width:600px){.wrap{width:min(100% - 32px,1160px)}nav{height:66px}.navlinks{display:none}.hero{min-height:630px}.hero-inner{padding:90px 0}.hero-stamp{right:-95px;top:68%;width:230px;opacity:.2}h1{font-size:clamp(58px,18vw,90px)}.hero p{font-size:15px}.btn{width:100%}section{padding:76px 0}.steps{grid-template-columns:1fr}.step{min-height:180px;border-right:0;border-bottom:1px solid var(--line)}.step:nth-child(2){border-bottom:1px solid var(--line)}.step:last-child{border-bottom:0}.step h3{margin-top:28px}.feature{padding:26px;min-height:330px}.reward{padding:30px 24px}.reward:after{opacity:.35;right:-90px}.foot{align-items:flex-start;flex-direction:column}.footlinks{flex-wrap:wrap}}
-    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
-  </style>
-</head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#f7f5ef">
+<meta name="description" content="LOOT DEPARTMENT — an avant-garde collectible house where culture, identity and storytelling meet digital collecting.">
+<title>LOOT DEPARTMENT — Collect Culture</title>
+<style>
+:root{--paper:#f7f5ef;--white:#fffefa;--ink:#101c35;--navy:#142746;--gold:#b39152;--gold2:#d4bd8b;--muted:#77766f;--line:#e7e1d5}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font-family:Inter,Arial,sans-serif;line-height:1.55}a{color:inherit;text-decoration:none}.wrap{width:min(1180px,calc(100% - 48px));margin:auto}
+header{position:sticky;top:0;z-index:5;background:rgba(247,245,239,.92);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}nav{height:82px;display:flex;align-items:center;justify-content:space-between;gap:24px}.brand{font-size:13px;font-weight:900;letter-spacing:.22em;display:flex;align-items:center;gap:12px}.seal{width:34px;height:34px;border:1px solid var(--gold);display:grid;place-items:center;color:var(--gold);font-family:Georgia,serif;font-size:20px}.links{display:flex;gap:30px;font-size:10px;letter-spacing:.17em;text-transform:uppercase;color:#535b67}.links a:hover{color:var(--gold)}
+.btn{display:inline-flex;align-items:center;justify-content:center;padding:15px 22px;background:var(--navy);color:#e6cf9d;border:1px solid var(--navy);font-size:10px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;transition:.2s}.btn:hover{background:#20385e;transform:translateY(-2px)}.btn.ghost{background:transparent;color:var(--navy);border-color:var(--gold)}
+.hero{min-height:700px;display:flex;align-items:center;position:relative;overflow:hidden;background:linear-gradient(110deg,rgba(255,254,250,.98),rgba(247,245,239,.82)),radial-gradient(circle at 78% 38%,#e8dfcd,transparent 40%)}.hero:after{content:"LD";position:absolute;right:7%;top:50%;transform:translateY(-50%);font:900 clamp(220px,35vw,510px)/.8 Georgia,serif;color:rgba(179,145,82,.075);letter-spacing:-.12em}.hero-copy{position:relative;z-index:1;max-width:760px;padding:110px 0}.eyebrow,.kicker{font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);font-weight:800}.eyebrow:before{content:"";display:inline-block;width:35px;height:1px;background:var(--gold);vertical-align:middle;margin-right:12px}h1{font:500 clamp(58px,9vw,112px)/.91 Georgia,'Times New Roman',serif;letter-spacing:-.065em;margin:30px 0 24px}h1 em{font-weight:400;color:var(--gold);font-style:italic}.hero p{max-width:510px;color:#656762;font-size:16px;line-height:1.9;margin:0 0 32px}.actions{display:flex;gap:12px;flex-wrap:wrap}
+section{padding:108px 0}.intro{background:var(--white)}.split{display:grid;grid-template-columns:1fr 1fr;gap:90px;align-items:center}.display{font:500 clamp(38px,5vw,64px)/1.04 Georgia,serif;letter-spacing:-.05em;margin:18px 0}.bodycopy{color:var(--muted);font-size:14px;line-height:1.95;max-width:510px}.editorial-note{border-left:1px solid var(--gold);padding:8px 0 8px 28px;font:italic 24px/1.5 Georgia,serif;color:#55564f}
+.band{background:var(--navy);color:#f8f5ed}.band .kicker{color:var(--gold2)}.band .display{max-width:800px}.band p{max-width:650px;color:#d1d4d8;font-size:14px;line-height:1.9}
+.pillars{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin-top:48px}.pillar{padding:30px 28px 32px 0}.pillar+.pillar{border-left:1px solid var(--line);padding-left:28px}.pillar h3{font:500 26px Georgia,serif;margin:16px 0 8px}.pillar p{font-size:13px;color:var(--muted);line-height:1.8;margin:0}
+.feature{background:#eee9df}.feature-grid{display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:center}.frame{min-height:430px;background:linear-gradient(145deg,#e4ddce,#f9f7f1);border:1px solid #ddd2bd;display:grid;place-items:center;position:relative;overflow:hidden}.frame:before,.frame:after{content:"";position:absolute;border:1px solid rgba(179,145,82,.45);border-radius:50%;width:290px;height:290px}.frame:after{width:220px;height:220px}.monogram{position:relative;z-index:1;font:italic 100px Georgia,serif;color:var(--gold);letter-spacing:-.1em}
+.manifesto{text-align:center;background:var(--white)}.manifesto blockquote{font:500 clamp(32px,5vw,62px)/1.1 Georgia,serif;letter-spacing:-.04em;max-width:900px;margin:24px auto}.manifesto blockquote em{color:var(--gold)}
+footer{border-top:1px solid var(--line);padding:30px 0;color:#77766f;font-size:10px;letter-spacing:.1em}.foot{display:flex;justify-content:space-between;gap:20px;align-items:center;flex-wrap:wrap}.foot strong{color:var(--ink);letter-spacing:.2em}.footlinks{display:flex;gap:22px;text-transform:uppercase}.footlinks a:hover{color:var(--gold)}
+@media(max-width:800px){.links{display:none}.split,.feature-grid{grid-template-columns:1fr;gap:35px}.pillars{grid-template-columns:1fr}.pillar+.pillar{border-left:0;border-top:1px solid var(--line);padding-left:0}.hero:after{right:-15%;opacity:.6}.hero{min-height:630px}}
+@media(max-width:560px){.wrap{width:calc(100% - 34px)}nav{height:70px}.hero-copy{padding:85px 0}.btn{width:100%}section{padding:76px 0}.frame{min-height:300px}.foot{flex-direction:column;align-items:flex-start}}
+</style></head>
 <body>
-  <div class="topline"></div>
-  <header>
-    <nav class="wrap" aria-label="Main navigation">
-      <a class="brand" href="#top" aria-label="LOOT DEPARTMENT home"><span class="mark"><span>✦</span></span> LOOT DEPARTMENT</a>
-      <div class="navlinks"><a href="#mission">The mission</a><a href="#collection">The collection</a><a href="#reward">The vision</a></div>
-      <a class="btn" href="https://gravemint.io/mint/DEADfJLpRkbBuXEWWpEBXbzV31NE5DdAzmmibp7WVxow" target="_blank" rel="noopener">Enter the loot <span>↗</span></a>
-    </nav>
-  </header>
-  <main id="top">
-    <section class="hero">
-      <div class="wrap">
-        <div class="hero-inner">
-          <div class="eyebrow">The collection. The gravestone. The loot.</div>
-          <h1>FIND IT.<span>CLAIM IT.</span></h1>
-          <p>A department for digital collectibles, rare finds and the culture built around them. Collect what speaks to you. Trade with purpose. Let the loot tell the story.</p>
-          <div class="actions">
-            <a class="btn primary" href="https://gravemint.io/mint/DEADfJLpRkbBuXEWWpEBXbzV31NE5DdAzmmibp7WVxow" target="_blank" rel="noopener">Explore the collection ↗</a>
-            <a class="btn" href="https://discord.gg/tVfKKxx5R" target="_blank" rel="noopener">Join the community ↗</a>
-          </div>
-        </div>
-        <div class="hero-stamp" aria-hidden="true"><div class="stamptext">LOOT<br>DEPARTMENT<small>COLLECTORS DIVISION · EST. ON-CHAIN</small></div></div>
-      </div>
-    </section>
-    <section id="mission">
-      <div class="wrap">
-        <div class="section-head">
-          <div><div class="kicker">01 / The mission</div><h2>More than a JPEG.<br>A reason to collect.</h2></div>
-          <p>LOOT is built around the thrill of the find: discovering pieces, building a collection, connecting with other collectors and seeing where ownership can lead.</p>
-        </div>
-        <div class="steps">
-          <article class="step"><div class="num">01 — COLLECT</div><h3>Find your piece.</h3><p>Discover digital collectibles and make your collection your own.</p></article>
-          <article class="step"><div class="num">02 — FLEX</div><h3>Show your taste.</h3><p>Every collection has a story. Put yours on display.</p></article>
-          <article class="step"><div class="num">03 — UNLOCK</div><h3>Look beyond the art.</h3><p>Explore future community experiences and collector-focused perks.</p></article>
-          <article class="step"><div class="num">04 — LOOT</div><h3>Enjoy the hunt.</h3><p>Trade, connect and keep your eyes open for what comes next.</p></article>
-        </div>
-      </div>
-    </section>
-    <section class="collection" id="collection">
-      <div class="wrap">
-        <div class="section-head">
-          <div><div class="kicker">02 / The collection</div><h2>Good finds.<br>Great stories.</h2></div>
-          <p>Browse the LOOT collection on Gravemint. Discover the pieces, explore the marketplace and follow the collection as it grows.</p>
-        </div>
-        <div class="collect-grid">
-          <div class="feature">
-            <span class="tag">Official collection</span>
-            <h3>THE COLLECTION.<br>THE GRAVESTONE.<br>THE LOOT.</h3>
-            <p>Digital collectibles made for people who love the hunt. Find a favourite, add it to your collection and connect with the LOOT community.</p>
-            <a class="btn primary" href="https://gravemint.io/mint/DEADfJLpRkbBuXEWWpEBXbzV31NE5DdAzmmibp7WVxow" target="_blank" rel="noopener">View on Gravemint ↗</a>
-          </div>
-          <div class="sidecards">
-            <a class="mini" href="https://gravemint.io/mint/DEADfJLpRkbBuXEWWpEBXbzV31NE5DdAzmmibp7WVxow" target="_blank" rel="noopener"><div class="arrow">↗</div><div><h3>Collect & discover</h3><p>Head to the official collection page.</p></div></a>
-            <a class="mini" href="https://discord.gg/tVfKKxx5R" target="_blank" rel="noopener"><div class="arrow">↗</div><div><h3>Meet the department</h3><p>Join the community and stay in the loop.</p></div></a>
-          </div>
-        </div>
-      </div>
-    </section>
-    <section id="reward">
-      <div class="wrap">
-        <div class="reward">
-          <div class="kicker">03 / The long game</div>
-          <h2>From rare finds<br>to real-world dreams.</h2>
-          <p>The LOOT vision is bigger than the screen. One concept on the horizon is a rare-collectible reward experience — with a real Ferrari as an ambitious target for a future, properly announced campaign.</p>
-          <p class="notice">Important: The Ferrari idea is a future concept, not a currently active giveaway or guaranteed reward. No eligibility rules, campaign dates or prize terms have been announced. Watch official LOOT channels for verified details.</p>
-        </div>
-      </div>
-    </section>
-    <section class="manifesto">
-      <div class="wrap">
-        <div class="kicker">The department code</div>
-        <blockquote>GOALS — NOT PROMISES.<br><span>COLLECT WITH INTENT.</span></blockquote>
-      </div>
-    </section>
-  </main>
-  <footer>
-    <div class="wrap foot">
-      <strong>LOOT DEPARTMENT</strong>
-      <div>Collect. Flex. Unlock. Loot. © <span id="year"></span></div>
-      <div class="footlinks"><a href="https://gravemint.io/mint/DEADfJLpRkbBuXEWWpEBXbzV31NE5DdAzmmibp7WVxow" target="_blank" rel="noopener">Gravemint</a><a href="https://discord.gg/tVfKKxx5R" target="_blank" rel="noopener">Discord</a></div>
-    </div>
-  </footer>
-  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
-</body>
-</html>
+<header><nav class="wrap"><a class="brand" href="index.html"><span class="seal">L</span> LOOT DEPARTMENT</a><div class="links"><a href="#philosophy">Philosophy</a><a href="history.html">Our story</a><a href="#collect">The collection</a></div><a class="btn" href="https://gravemint.io/mint/DEADfJLpRkbBuXEWWpEBXbzV31NE5DdAzmmibp7WVxow" target="_blank" rel="noopener">Discover LOOT ↗</a></nav></header>
+<main>
+<section class="hero"><div class="wrap"><div class="hero-copy"><div class="eyebrow">An independent collectible house</div><h1>Collect<br><em>culture.</em><br>Own a story.</h1><p>LOOT DEPARTMENT lives where collectible culture, fashion and storytelling intersect. We look beyond the object — toward the identity, imagination and ambition that give a piece its meaning.</p><div class="actions"><a class="btn" href="https://gravemint.io/mint/DEADfJLpRkbBuXEWWpEBXbzV31NE5DdAzmmibp7WVxow" target="_blank" rel="noopener">Explore the collection ↗</a><a class="btn ghost" href="history.html">Discover our story</a></div></div></div></section>
+<section class="intro" id="philosophy"><div class="wrap split"><div><div class="kicker">01 / The philosophy</div><h2 class="display">Not just what you collect.<br>What it says about you.</h2><p class="bodycopy">The most memorable collections are never only about ownership. They are about taste, perspective and the stories people choose to carry. LOOT DEPARTMENT brings an editorial eye to digital collectibles — considered, expressive and made to be discovered.</p></div><div class="editorial-note">“A collectible becomes iconic when the story around it is impossible to ignore.”</div></div><div class="wrap pillars"><article class="pillar"><div class="kicker">01 — Discover</div><h3>Find the exceptional.</h3><p>Seek out distinctive pieces with character, rarity and a point of view.</p></article><article class="pillar"><div class="kicker">02 — Express</div><h3>Make it personal.</h3><p>Build a collection that reflects your own identity, taste and curiosity.</p></article><article class="pillar"><div class="kicker">03 — Connect</div><h3>Share the story.</h3><p>Meet a culture of collectors and follow the ideas shaping what comes next.</p></article></div></section>
+<section class="band"><div class="wrap"><div class="kicker">02 / Culture in focus</div><h2 class="display">People. Perspective.<br>Stories that stay with you.</h2><p>Our creative direction is inspired by the way influential artists, performers and cultural voices shape style and conversation. From intimate profiles to ambitious editorial campaigns, we want every story to reveal the person and purpose behind the image.</p><p>Celebrity features, partnerships and likeness-led campaigns will only be presented as official when confirmed and appropriately authorised.</p></div></section>
+<section class="feature" id="collect"><div class="wrap feature-grid"><div class="frame" aria-label="LOOT Department editorial monogram"><div class="monogram">LD</div></div><div><div class="kicker">03 / The collection</div><h2 class="display">A new perspective on collecting.</h2><p class="bodycopy">Explore the LOOT DEPARTMENT collection on Gravemint. Discover the pieces, follow the department and become part of a culture built around the thrill of the find.</p><div class="actions"><a class="btn" href="https://gravemint.io/mint/DEADfJLpRkbBuXEWWpEBXbzV31NE5DdAzmmibp7WVxow" target="_blank" rel="noopener">View on Gravemint ↗</a><a class="btn ghost" href="https://discord.gg/tVfKKxx5R" target="_blank" rel="noopener">Join the community ↗</a></div></div></div></section>
+<section class="manifesto"><div class="wrap"><div class="kicker">The department code</div><blockquote>GOALS — NOT PROMISES.<br><em>Collect with intention.</em></blockquote></div></section>
+</main>
+<footer><div class="wrap foot"><strong>LOOT DEPARTMENT</strong><span>Collect culture. Own a story. © <span id="year"></span></span><div class="footlinks"><a href="history.html">Our story</a><a href="https://discord.gg/tVfKKxx5R">Community</a><a href="https://gravemint.io/mint/DEADfJLpRkbBuXEWWpEBXbzV31NE5DdAzmmibp7WVxow">Gravemint</a></div></div></footer>
+<script>document.getElementById('year').textContent=new Date().getFullYear()</script></body></html>
