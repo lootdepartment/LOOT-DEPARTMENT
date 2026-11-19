@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#080b10">
+<meta name="description" content="LOOT DEPARTMENT X Planner — plan, write and organise the department's weekly editorial calendar.">
+<title>X Planner — LOOT DEPARTMENT</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--night:#080b10;--panel:#10151c;--panel2:#151b25;--navy:#231b3c;--gold:#e3990a;--orange:#ce5a1e;--ivory:#f5f0e7;--muted:#a9a39a;--line:rgba(227,153,10,.23);--green:#72b68a;--blue:#88aee8;--red:#d47b73}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(ellipse at 78% -10%,rgba(35,27,60,.55),transparent 36%),var(--night);color:var(--ivory);font-family:'DM Sans',Arial,sans-serif;min-height:100vh}button,input,textarea,select{font:inherit}button{cursor:pointer}a{color:inherit;text-decoration:none}.wrap{width:min(1440px,calc(100% - 48px));margin:auto}
+.topbar{height:76px;border-bottom:1px solid var(--line);background:rgba(8,11,16,.92);display:flex;align-items:center;position:sticky;top:0;z-index:20;backdrop-filter:blur(14px)}.nav{display:flex;align-items:center;justify-content:space-between;gap:20px}.brand{display:flex;align-items:center;gap:12px;font-size:11px;font-weight:700;letter-spacing:.23em}.brand img{width:36px;height:36px;object-fit:contain}.navright{display:flex;align-items:center;gap:22px;font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:#c9c1b5}.navright a:hover{color:var(--gold)}.navright .active{color:var(--gold);border-bottom:1px solid var(--gold);padding:10px 0}
+.hero{padding:46px 0 30px;border-bottom:1px solid rgba(255,255,255,.06)}.eyebrow{font-size:9px;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);font-weight:700}.herohead{display:flex;align-items:end;justify-content:space-between;gap:30px}.hero h1{font:500 clamp(44px,6vw,72px)/.9 'Cormorant Garamond',Georgia,serif;letter-spacing:-.04em;margin:15px 0 10px}.hero h1 em{color:var(--gold);font-weight:400}.hero p{max-width:600px;color:var(--muted);font-size:12px;line-height:1.9;margin:0}.hero-actions{display:flex;gap:10px;flex-wrap:wrap}.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:1px solid var(--gold);background:linear-gradient(135deg,#f0c36a,#c98208);color:#1b1425;padding:12px 17px;font-size:9px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;transition:.2s}.btn:hover{transform:translateY(-2px);box-shadow:0 7px 22px rgba(227,153,10,.2)}.btn.secondary{background:transparent;color:#e8cb91;border-color:rgba(227,153,10,.4)}.btn.ghost{background:transparent;color:#c9c1b5;border-color:rgba(255,255,255,.14)}.btn.small{padding:8px 11px;font-size:8px}.btn.danger{border-color:rgba(212,123,115,.4);color:#e5a29c;background:transparent}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;padding:22px 0}.stat{padding:15px 18px;background:linear-gradient(135deg,rgba(35,27,60,.58),rgba(16,21,28,.86));border:1px solid rgba(227,153,10,.16)}.stat strong{display:block;font:500 30px/1 'Cormorant Garamond',serif;color:#f2d49a}.stat span{display:block;margin-top:7px;font-size:8px;letter-spacing:.18em;text-transform:uppercase;color:#aaa3b1}
+.toolbar{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;padding:16px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}.weeknav,.toolgroup{display:flex;align-items:center;gap:8px;flex-wrap:wrap}.weeklabel{min-width:190px;text-align:center;font:500 23px 'Cormorant Garamond',serif;color:#f3e4c6}.iconbtn{width:34px;height:34px;border:1px solid rgba(255,255,255,.14);background:#111722;color:#e6d6b6;font-size:17px}.iconbtn:hover{border-color:var(--gold);color:var(--gold)}.filter{background:#111722;color:#cfc5b5;border:1px solid rgba(255,255,255,.14);padding:9px 12px;font-size:10px;outline:none}.filter:focus{border-color:var(--gold)}
+.main-grid{display:grid;grid-template-columns:minmax(0,1fr) 290px;gap:22px;padding:24px 0 60px;align-items:start}.calendar-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}.calendar-head h2,.side-title{font:500 29px 'Cormorant Garamond',serif;margin:0}.calendar-head p{font-size:9px;letter-spacing:.12em;color:var(--muted);text-transform:uppercase;margin:4px 0 0}
+.days{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px}.day{background:linear-gradient(145deg,rgba(18,24,34,.96),rgba(12,16,23,.96));border:1px solid rgba(255,255,255,.09);min-height:190px;overflow:hidden}.day.today{border-color:rgba(227,153,10,.55);box-shadow:0 0 0 1px rgba(227,153,10,.08)}.dayhead{display:flex;justify-content:space-between;align-items:center;padding:13px 15px;border-bottom:1px solid rgba(255,255,255,.07);background:rgba(255,255,255,.018)}.dayname{font-size:9px;letter-spacing:.17em;text-transform:uppercase;color:#e8d8b9;font-weight:700}.daydate{font:500 19px 'Cormorant Garamond',serif;color:var(--gold);margin-left:7px}.daytag{font-size:8px;color:#918b83;text-transform:uppercase;letter-spacing:.12em}.dayposts{padding:10px;display:grid;gap:9px}.empty{padding:19px 12px;text-align:center;color:#777f89;font-size:10px;border:1px dashed rgba(255,255,255,.1)}.post{border:1px solid rgba(255,255,255,.09);background:#151c27;padding:11px 12px;position:relative}.post:hover{border-color:rgba(227,153,10,.35)}.posttop{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:8px}.postmeta{display:flex;align-items:center;gap:7px;flex-wrap:wrap}.time{font-size:9px;color:#e4d3b0;font-weight:700;letter-spacing:.08em}.cat{font-size:7px;letter-spacing:.13em;text-transform:uppercase;padding:4px 6px;border:1px solid rgba(227,153,10,.28);color:#e3bd72;background:rgba(227,153,10,.07)}.cat.fashion{color:#e4a2a0;border-color:rgba(212,123,115,.28);background:rgba(212,123,115,.07)}.cat.community{color:#8fc4a0;border-color:rgba(114,182,138,.28);background:rgba(114,182,138,.07)}.cat.collectibles{color:#a9bdec;border-color:rgba(136,174,232,.28);background:rgba(136,174,232,.07)}.cat.culture{color:#d4b5ed;border-color:rgba(183,142,218,.28);background:rgba(183,142,218,.07)}.status{font-size:7px;text-transform:uppercase;letter-spacing:.1em;color:#9eaaad}.status.draft{color:#a9a39a}.status.ready{color:#8fc4a0}.status.published{color:#88aee8}.posttext{font-size:11px;line-height:1.65;color:#e5e0d8;white-space:pre-wrap;overflow-wrap:anywhere}.postfoot{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:9px}.charcount{font-size:8px;color:#7f8993}.postactions{display:flex;gap:5px;flex-wrap:wrap}.mini{border:1px solid rgba(255,255,255,.12);background:transparent;color:#c9c1b5;padding:5px 7px;font-size:8px}.mini:hover{border-color:var(--gold);color:var(--gold)}.mini.copy{color:#e7c780;border-color:rgba(227,153,10,.3)}
+.side{display:grid;gap:14px}.sidecard{border:1px solid rgba(227,153,10,.18);background:linear-gradient(145deg,rgba(35,27,60,.48),rgba(16,21,28,.94));padding:17px}.side-title{font-size:25px;margin-bottom:11px}.sidecard p{font-size:10px;line-height:1.8;color:#aaa5a0;margin:0}.pillars{display:grid;gap:9px;margin-top:14px}.pillar{display:flex;gap:9px;align-items:flex-start}.pillar i{width:6px;height:6px;border-radius:50%;background:var(--gold);margin-top:5px;flex:0 0 auto}.pillar strong{display:block;font-size:9px;color:#e7d8bd;letter-spacing:.06em}.pillar span{display:block;font-size:9px;color:#99939a;line-height:1.6;margin-top:2px}.mixbar{display:flex;height:8px;border-radius:8px;overflow:hidden;background:#252a33;margin:12px 0 8px}.mixbar span{display:block;height:100%}.mixlegend{display:grid;grid-template-columns:1fr 1fr;gap:6px}.mixlegend div{font-size:8px;color:#aaa39a}.mixlegend b{color:#e8d6b7;font-weight:600}.note{font-size:9px!important;color:#8f8991!important;margin-top:10px!important}.sidebuttons{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-top:13px}
+.modalback{position:fixed;inset:0;background:rgba(0,0,0,.76);z-index:50;display:none;align-items:center;justify-content:center;padding:18px;backdrop-filter:blur(5px)}.modalback.open{display:flex}.modal{width:min(700px,100%);max-height:92vh;overflow:auto;background:#10151e;border:1px solid rgba(227,153,10,.45);box-shadow:0 20px 80px rgba(0,0,0,.55)}.modalhead{display:flex;align-items:center;justify-content:space-between;padding:17px 20px;border-bottom:1px solid var(--line)}.modalhead h2{font:500 27px 'Cormorant Garamond',serif;margin:0}.xclose{background:none;border:0;color:#d4c7b1;font-size:23px}.formgrid{padding:18px 20px;display:grid;grid-template-columns:1fr 1fr;gap:13px}.field{display:grid;gap:6px}.field.full{grid-column:1/-1}.field label{font-size:8px;letter-spacing:.16em;text-transform:uppercase;color:#c4b69b}.field input,.field textarea,.field select{width:100%;border:1px solid rgba(255,255,255,.13);background:#090e15;color:#f3eee5;padding:10px 11px;font-size:11px;outline:none}.field textarea{min-height:100px;resize:vertical;line-height:1.6}.field input:focus,.field textarea:focus,.field select:focus{border-color:var(--gold)}.formfoot{padding:0 20px 20px;display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}.helper{font-size:8px;color:#858b92}.toast{position:fixed;bottom:20px;left:50%;transform:translate(-50%,20px);opacity:0;pointer-events:none;z-index:80;padding:11px 16px;background:#e6c27d;color:#1b1425;font-size:10px;font-weight:700;transition:.25s}.toast.show{opacity:1;transform:translate(-50%,0)}
+footer{border-top:1px solid var(--line);padding:25px 0;color:#817b73;font-size:8px;letter-spacing:.14em}.foot{display:flex;justify-content:space-between;gap:15px;flex-wrap:wrap}.foot strong{color:#e5d9c4;letter-spacing:.22em}
+@media(max-width:1050px){.main-grid{grid-template-columns:1fr}.side{grid-template-columns:repeat(2,minmax(0,1fr))}.sidecard:last-child{grid-column:1/-1}}
+@media(max-width:700px){.wrap{width:calc(100% - 30px)}.topbar{height:66px}.navright{gap:12px;font-size:8px}.navright a:nth-child(2){display:none}.herohead{display:block}.hero-actions{margin-top:18px}.stats{grid-template-columns:repeat(2,1fr);gap:8px}.days{grid-template-columns:1fr}.side{grid-template-columns:1fr}.sidecard:last-child{grid-column:auto}.weeklabel{min-width:155px;font-size:20px}.toolbar{align-items:flex-start}.toolgroup{width:100%}.filter{flex:1;min-width:0}.formgrid{grid-template-columns:1fr}.field.full{grid-column:auto}}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
+</style>
+</head>
+<body>
+<header class="topbar"><div class="wrap nav"><a class="brand" href="index.html"><img src="https://raw.githubusercontent.com/lootdepartment/LOOT-DEPARTMENT/main/images/logo.png" alt="LOOT DEPARTMENT logo"> LOOT DEPARTMENT</a><nav class="navright"><a href="index.html">The House</a><a href="nft.html">Collection</a><a class="active" href="x-planner.html">X Planner</a></nav></div></header>
+<main class="wrap">
+<section class="hero"><div class="herohead"><div><div class="eyebrow">The department / Editorial operations</div><h1>The X <em>planner.</em></h1><p>A weekly command desk for LOOT DEPARTMENT. Shape the conversation, organise the drops and keep every post on-brand — collect culture, own the story.</p></div><div class="hero-actions"><button class="btn" id="addTop">＋ New post</button><button class="btn secondary" id="exportTop">Export week</button></div></div></section>
+<section class="stats" aria-label="Weekly planner statistics"><div class="stat"><strong id="statTotal">0</strong><span>Scheduled posts</span></div><div class="stat"><strong id="statReady">0</strong><span>Ready to publish</span></div><div class="stat"><strong id="statDraft">0</strong><span>Drafts in progress</span></div><div class="stat"><strong id="statPublished">0</strong><span>Published</span></div></section>
+<div class="toolbar"><div class="weeknav"><button class="iconbtn" id="prevWeek" aria-label="Previous week">‹</button><div class="weeklabel" id="weekLabel">Week of ...</div><button class="iconbtn" id="nextWeek" aria-label="Next week">›</button><button class="btn ghost small" id="thisWeek">This week</button></div><div class="toolgroup"><input class="filter" id="search" type="search" placeholder="Search posts…" aria-label="Search posts"><select class="filter" id="categoryFilter" aria-label="Filter by category"><option value="all">All pillars</option><option>Fashion</option><option>Collectibles</option><option>Culture</option><option>Community</option><option>Promotion</option></select><select class="filter" id="statusFilter" aria-label="Filter by status"><option value="all">All statuses</option><option value="Draft">Draft</option><option value="Ready">Ready</option><option value="Published">Published</option></select></div></div>
+<div class="main-grid"><section class="calendar"><div class="calendar-head"><div><h2>Weekly schedule</h2><p>Plan with intention. Publish with personality.</p></div><button class="btn secondary small" id="addInline">＋ Add slot</button></div><div class="days" id="days"></div></section>
+<aside class="side">
+<div class="sidecard"><div class="eyebrow">01 / The strategy</div><h2 class="side-title">The LOOT voice.</h2><p>Luxury culture with a collector's instinct. Confident, playful and visually led — never desperate, never generic.</p><div class="pillars">
+<div class="pillar"><i></i><div><strong>Fashion & flex</strong><span>Luxury-inspired style, digital identity, playful fashion comparisons.</span></div></div>
+<div class="pillar"><i></i><div><strong>Collectible culture</strong><span>Show the art, the details, the rarity and the joy of collecting.</span></div></div>
+<div class="pillar"><i></i><div><strong>Culture & humour</strong><span>Pop-culture conversation, witty observations and shareable formats.</span></div></div>
+<div class="pillar"><i></i><div><strong>Community & conversion</strong><span>Invite replies, spotlight collectors and make clear collection calls to action.</span></div></div>
+</div></div>
+<div class="sidecard"><div class="eyebrow">02 / Content balance</div><h2 class="side-title">The weekly mix.</h2><p>Keep the feed varied. Give people a reason to stop, smile, reply and discover the collection.</p><div class="mixbar"><span style="width:28%;background:#d49a9b"></span><span style="width:24%;background:#8e9fd2"></span><span style="width:19%;background:#b998d5"></span><span style="width:19%;background:#7db58d"></span><span style="width:10%;background:#e3990a"></span></div><div class="mixlegend"><div>● <b>Fashion</b> 28%</div><div>● <b>Collectibles</b> 24%</div><div>● <b>Culture</b> 19%</div><div>● <b>Community</b> 19%</div><div>● <b>Promotion</b> 10%</div></div><p class="note">A planning guide, not a rigid quota. Prioritise quality and current conversations.</p></div>
+<div class="sidecard"><div class="eyebrow">03 / Desk tools</div><h2 class="side-title">Manage the week.</h2><p>Your calendar is saved in this browser. Export a backup before moving to another device.</p><div class="sidebuttons"><button class="btn secondary small" id="exportSide">Export JSON</button><button class="btn ghost small" id="importBtn">Import JSON</button><button class="btn ghost small" id="resetWeek">Reset sample</button><button class="btn ghost small" id="clearWeek">Clear week</button></div><input type="file" id="importFile" accept="application/json,.json" hidden><p class="note">No X API connection is configured. This is a planning and drafting desk; posts are not published automatically.</p></div>
+</aside></div>
+</main>
+<footer><div class="wrap foot"><strong>LOOT DEPARTMENT · X PLANNER</strong><span>GOALS — NOT PROMISES · COLLECT CULTURE · © <span id="year"></span></span><a href="index.html">Return to the house ↑</a></div></footer>
+<div class="modalback" id="modalBack" role="dialog" aria-modal="true" aria-labelledby="modalTitle"><div class="modal"><div class="modalhead"><h2 id="modalTitle">Create a post</h2><button class="xclose" id="closeModal" aria-label="Close">×</button></div><form id="postForm"><div class="formgrid">
+<div class="field"><label for="postDate">Date</label><input id="postDate" type="date" required></div>
+<div class="field"><label for="postTime">Time</label><input id="postTime" type="time" value="12:00" required></div>
+<div class="field"><label for="postCategory">Content pillar</label><select id="postCategory"><option>Fashion</option><option>Collectibles</option><option>Culture</option><option>Community</option><option>Promotion</option></select></div>
+<div class="field"><label for="postStatus">Status</label><select id="postStatus"><option>Draft</option><option>Ready</option><option>Published</option></select></div>
+<div class="field full"><label for="postText">Post copy <span id="charLive" class="helper">0 / 280</span></label><textarea id="postText" maxlength="280" placeholder="Write the post in the LOOT voice…" required></textarea></div>
+<div class="field full"><label for="postImage">AI image prompt / visual direction</label><textarea id="postImage" placeholder="Optional: describe the visual that should accompany this post."></textarea></div>
+<div class="field full"><label for="postNotes">Internal notes</label><input id="postNotes" type="text" placeholder="Optional angle, asset filename, follow-up…"></div>
+</div><div class="formfoot"><span class="helper">X post limit: 280 characters. Drafts stay editable.</span><div style="display:flex;gap:8px"><button type="button" class="btn ghost" id="cancelModal">Cancel</button><button type="submit" class="btn">Save post</button></div></div></form></div></div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script>
+(function(){
+'use strict';
+const KEY='lootDepartmentXPlanner_v1';
+const $=id=>document.getElementById(id);
+const daysEl=$('days');
+let weekStart=monday(new Date());
+let posts=load();
+let editingId=null;
+function monday(d){const x=new Date(d.getFullYear(),d.getMonth(),d.getDate());const day=(x.getDay()+6)%7;x.setDate(x.getDate()-day);return x}
+function addDays(d,n){const x=new Date(d);x.setDate(x.getDate()+n);return x}
+function iso(d){return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0')}
+function niceRange(d){const e=addDays(d,6);const a=d.toLocaleDateString('en-US',{month:'short',day:'numeric'});const b=e.toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'});return a+' – '+b}
+function id(){return 'loot-'+Date.now().toString(36)+'-'+Math.random().toString(36).slice(2,7)}
+function samplePosts(start){
+ const rows=[
+ ['09:30','Fashion','Draft','Some people collect handbags. Some collect identities. We happen to believe your digital closet deserves a little LOOT. 💅💰','Editorial fashion portrait, rich plum and antique gold styling, luxury handbag-inspired silhouette, cinematic studio lighting, no visible brand logos.'],
+ ['18:00','Collectibles','Ready','A good find is never just an object. It is the story you get to carry, display and make your own. 💎','Close-up macro of a premium digital collectible displayed like a museum artefact, black velvet, warm gold rim light.'],
+ ['11:00','Culture','Draft','POV: you said you were only browsing… and somehow left with a whole new personality. 👜✨','Playful high-fashion editorial, expressive character surrounded by floating collectible accessories, surreal luxury mood.'],
+ ['19:00','Community','Draft','Collector roll call 💰 What makes a digital collectible worth keeping: the art, the story, the rarity, or the feeling?','Minimal dark editorial graphic with four elegant symbols representing art, story, rarity and identity.'],
+ ['10:00','Fashion','Ready','The outfit is a mood. The details are the statement. The collection? That is personal. 💅','Luxury street-style editorial, dramatic tailored outfit, gold accessories, deep navy and warm amber palette.'],
+ ['17:30','Promotion','Draft','The LOOT collection is open on Gravemint. Take a look, find the piece that speaks to you, and make it part of your story. 💰','Elegant NFT collection showcase on a dark luxury display plinth, subtle gold highlights, premium gallery presentation.'],
+ ['12:00','Collectibles','Draft','Not every treasure belongs in a vault. Some belong in your collection. 💎','Digital collectible card hovering above a dark stone pedestal, gold dust, premium product photography.'],
+ ['18:30','Culture','Draft','Luxury has a language. Collectors have their own. What is one thing you would never compromise on?','Editorial typography-led social image, understated black and gold design, refined serif lettering.'],
+ ['10:30','Community','Ready','Show us your latest digital find. The department is always watching for good taste. 👀💰','Curated grid of abstract collectible objects, gallery wall, dark plum and gold lighting.'],
+ ['19:00','Fashion','Draft','A little gold. A little attitude. A lot of main-character energy. 💅✨','High-fashion accessories still life, gold chain, sunglasses, handbag silhouette, warm studio reflections.'],
+ ['11:30','Collectibles','Draft','Collect what you connect with. Flex what feels like you. That is the whole point.','Luxury digital collectible framed like contemporary art, cream backdrop, gold frame, editorial composition.'],
+ ['18:00','Promotion','Draft','THE COLLECTION. THE GRAVESTONE. THE LOOT. Explore the department and discover your next digital find. 💀💰','LOOT DEPARTMENT-inspired campaign graphic, dramatic dark architecture, gold accents, no third-party logos.'],
+ ['10:00','Culture','Draft','A trend can catch your eye. Personal taste makes you stay. What is your forever aesthetic?','Fashion moodboard collage with textures, jewellery, architecture and digital art in a cohesive luxury editorial layout.'],
+ ['17:00','Community','Draft','Tag the friend who always spots the rare one first. Every circle needs a collector with an eye. 👜','Two friends looking at a digital art display in a luxury gallery, candid editorial photography.']
+ ];
+ return rows.map((r,i)=>({id:id(),date:iso(addDays(start,Math.floor(i/2))),time:r[0],category:r[1],status:r[2],text:r[3],imagePrompt:r[4],notes:''}));
+}
+function load(){try{const raw=localStorage.getItem(KEY);if(raw){const data=JSON.parse(raw);if(Array.isArray(data))return data}}catch(e){}return samplePosts(monday(new Date()))}
+function save(){localStorage.setItem(KEY,JSON.stringify(posts));render()}
+function weekPosts(){return posts.filter(p=>p.date>=iso(weekStart)&&p.date<=iso(addDays(weekStart,6)))}
+function esc(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function categoryClass(c){return c.toLowerCase().replace(/[^a-z]/g,'')}
+function render(){
+ $('weekLabel').textContent=niceRange(weekStart);
+ const visible=weekPosts();
+ $('statTotal').textContent=visible.length;
+ $('statReady').textContent=visible.filter(p=>p.status==='Ready').length;
+ $('statDraft').textContent=visible.filter(p=>p.status==='Draft').length;
+ $('statPublished').textContent=visible.filter(p=>p.status==='Published').length;
+ const query=$('search').value.trim().toLowerCase(),cat=$('categoryFilter').value,status=$('statusFilter').value;
+ daysEl.innerHTML='';
+ for(let i=0;i<7;i++){
+  const date=addDays(weekStart,i),key=iso(date),today=key===iso(new Date());
+  const dayPosts=visible.filter(p=>p.date===key).filter(p=>(cat==='all'||p.category===cat)&&(status==='all'||p.status===status)&&(!query||(p.text+' '+p.category+' '+(p.notes||'')).toLowerCase().includes(query))).sort((a,b)=>a.time.localeCompare(b.time));
+  const card=document.createElement('article');card.className='day'+(today?' today':'');
+  card.innerHTML='<div class="dayhead"><div><span class="dayname">'+date.toLocaleDateString('en-US',{weekday:'long'})+'</span><span class="daydate">'+date.getDate()+'</span></div><span class="daytag">'+(today?'Today':date.toLocaleDateString('en-US',{month:'short'}))+'</span></div><div class="dayposts">'+(dayPosts.length?dayPosts.map(postHTML).join(''):'<div class="empty">No posts in this view.<br>Give this day a little LOOT.</div>')+'</div>';
+  daysEl.appendChild(card);
+ }
+}
+function postHTML(p){
+ const text=esc(p.text),status=p.status.toLowerCase();
+ return '<article class="post" data-id="'+esc(p.id)+'"><div class="posttop"><div class="postmeta"><span class="time">'+esc(p.time)+'</span><span class="cat '+categoryClass(p.category)+'">'+esc(p.category)+'</span></div><span class="status '+status+'">'+esc(p.status)+'</span></div><div class="posttext">'+text+'</div><div class="postfoot"><span class="charcount">'+p.text.length+'/280 chars</span><div class="postactions"><button class="mini copy" data-action="copy" data-id="'+esc(p.id)+'">Copy</button><button class="mini" data-action="status" data-id="'+esc(p.id)+'">Status</button><button class="mini" data-action="edit" data-id="'+esc(p.id)+'">Edit</button></div></div>'+(p.imagePrompt?'<details style="margin-top:8px"><summary style="font-size:8px;color:#b7a77f;cursor:pointer">Visual direction</summary><p style="font-size:9px;line-height:1.6;color:#aaa;margin:7px 0 0">'+esc(p.imagePrompt)+'</p></details>':'')+'</article>';
+}
+function openModal(p,date){
+ editingId=p?p.id:null;
+ $('modalTitle').textContent=p?'Edit post':'Create a post';
+ $('postDate').value=p?p.date:(date||iso(new Date()));
+ $('postTime').value=p?p.time:'12:00';
+ $('postCategory').value=p?p.category:'Fashion';
+ $('postStatus').value=p?p.status:'Draft';
+ $('postText').value=p?p.text:'';
+ $('postImage').value=p?p.imagePrompt||'':'';
+ $('postNotes').value=p?p.notes||'':'';
+ updateCount();$('modalBack').classList.add('open');$('postText').focus();
+}
+function closeModal(){$('modalBack').classList.remove('open');editingId=null}
+function updateCount(){$('charLive').textContent=$('postText').value.length+' / 280'}
+function notify(msg){const t=$('toast');t.textContent=msg;t.classList.add('show');clearTimeout(notify.timer);notify.timer=setTimeout(()=>t.classList.remove('show'),2100)}
+function exportData(){
+ const data={project:'LOOT DEPARTMENT X Planner',version:1,exportedAt:new Date().toISOString(),posts:weekPosts()};
+ const blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download='loot-x-planner-'+iso(weekStart)+'.json';a.click();URL.revokeObjectURL(url);notify('Week exported');
+}
+function importData(file){
+ const reader=new FileReader();reader.onload=()=>{try{const parsed=JSON.parse(reader.result);const incoming=Array.isArray(parsed)?parsed:parsed.posts;if(!Array.isArray(incoming))throw new Error('No posts array');const cleaned=incoming.filter(p=>p&&p.date&&p.text).map(p=>({id:p.id||id(),date:String(p.date),time:p.time||'12:00',category:p.category||'Culture',status:['Draft','Ready','Published'].includes(p.status)?p.status:'Draft',text:String(p.text).slice(0,280),imagePrompt:p.imagePrompt||'',notes:p.notes||''}));posts=posts.filter(p=>!cleaned.some(n=>n.id===p.id));posts.push(...cleaned);localStorage.setItem(KEY,JSON.stringify(posts));render();notify('Imported '+cleaned.length+' posts');}catch(e){notify('Could not read that planner file');}};reader.readAsText(file);
+}
+daysEl.addEventListener('click',e=>{const b=e.target.closest('button[data-action]');if(!b)return;const p=posts.find(x=>x.id===b.dataset.id);if(!p)return;if(b.dataset.action==='edit')openModal(p);if(b.dataset.action==='copy'){navigator.clipboard.writeText(p.text).then(()=>notify('Post copied')).catch(()=>notify('Clipboard unavailable'));}if(b.dataset.action==='status'){p.status=p.status==='Draft'?'Ready':p.status==='Ready'?'Published':'Draft';save();notify('Status: '+p.status);}});
+$('postForm').addEventListener('submit',e=>{e.preventDefault();const p={id:editingId||id(),date:$('postDate').value,time:$('postTime').value,category:$('postCategory').value,status:$('postStatus').value,text:$('postText').value.trim(),imagePrompt:$('postImage').value.trim(),notes:$('postNotes').value.trim()};if(!p.text){notify('Add some post copy first');return}if(editingId){posts=posts.map(x=>x.id===editingId?p:x)}else posts.push(p);localStorage.setItem(KEY,JSON.stringify(posts));closeModal();render();notify(editingId?'Post updated':'Post saved');});
+$('postText').addEventListener('input',updateCount);
+$('addTop').addEventListener('click',()=>openModal(null,iso(weekStart)));
+$('addInline').addEventListener('click',()=>openModal(null,iso(weekStart)));
+$('closeModal').addEventListener('click',closeModal);$('cancelModal').addEventListener('click',closeModal);
+$('modalBack').addEventListener('click',e=>{if(e.target===$('modalBack'))closeModal()});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal()});
+$('prevWeek').addEventListener('click',()=>{weekStart=addDays(weekStart,-7);render()});
+$('nextWeek').addEventListener('click',()=>{weekStart=addDays(weekStart,7);render()});
+$('thisWeek').addEventListener('click',()=>{weekStart=monday(new Date());render()});
+['search','categoryFilter','statusFilter'].forEach(k=>$(k).addEventListener(k==='search'?'input':'change',render));
+['exportTop','exportSide'].forEach(k=>$(k).addEventListener('click',exportData));
+$('importBtn').addEventListener('click',()=>$('importFile').click());
+$('importFile').addEventListener('change',e=>{if(e.target.files[0])importData(e.target.files[0]);e.target.value=''});
+$('clearWeek').addEventListener('click',()=>{if(!confirm('Clear all posts from this displayed week? This cannot be undone.'))return;const start=iso(weekStart),end=iso(addDays(weekStart,6));posts=posts.filter(p=>p.date<start||p.date>end);save();notify('Displayed week cleared')});
+$('resetWeek').addEventListener('click',()=>{if(!confirm('Replace posts in this displayed week with the sample schedule?'))return;const start=iso(weekStart),end=iso(addDays(weekStart,6));posts=posts.filter(p=>p.date<start||p.date>end).concat(samplePosts(weekStart));save();notify('Sample schedule restored')});
+$('year').textContent=new Date().getFullYear();
+render();
+})();
+</script>
+</body></html>
