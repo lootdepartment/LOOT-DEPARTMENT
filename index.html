@@ -73,6 +73,17 @@ footer{background:#080b10;border-top:1px solid var(--line);padding:36px 0;color:
 .cleo-palace:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(9,7,15,.65),rgba(9,7,15,.08))}
 .cleo-palace-caption{position:absolute;z-index:1;left:28px;bottom:25px;font:italic 29px 'Cormorant Garamond',serif;color:#fff}
 @media(max-width:760px){.cleo-campaign{padding:70px 0}.cleo-intro{display:block}.cleo-intro p{margin-top:18px}.cleo-grid{grid-template-columns:1fr}.cleo-feature{min-height:480px}.cleo-side{grid-template-rows:1fr 1fr;min-height:560px}.cleo-tile{min-height:270px}.cleo-palace{height:190px}}
+
+/* Instagram / The LOOT Feed */
+.loot-feed{background:linear-gradient(135deg,#100d18 0%,#080b10 68%);position:relative;overflow:hidden;border-top:1px solid rgba(227,153,10,.18)}
+.loot-feed:before{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse at 85% 20%,rgba(206,90,30,.13),transparent 38%)}
+.loot-feed .wrap{position:relative;z-index:1}
+.feed-head{display:flex;justify-content:space-between;align-items:end;gap:30px;margin-bottom:32px}
+.feed-head p{max-width:370px;color:#b7b0a7;font-size:12px;line-height:1.9}
+.feed-frame{max-width:760px;margin:0 auto;padding:22px;background:rgba(255,255,255,.025);border:1px solid rgba(227,153,10,.3);box-shadow:0 24px 70px rgba(0,0,0,.28);display:flex;justify-content:center;min-height:240px}
+.feed-frame .instagram-media{margin:0 auto!important;max-width:100%!important;min-width:280px!important;width:100%!important}
+.feed-follow{display:flex;justify-content:center;margin-top:28px}
+@media(max-width:700px){.feed-head{display:block}.feed-head p{margin-top:16px}.feed-frame{padding:10px}}
 \n</style></head>
 <body>
 <header><nav class="wrap"><a class="brand" href="index.html"><img class="brand-icon" src="https://raw.githubusercontent.com/lootdepartment/LOOT-DEPARTMENT/main/images/logo.png" alt="LOOT DEPARTMENT logo"> LOOT DEPARTMENT</a><div class="navlinks"><a href="#philosophy">Philosophy</a><a href="history.html">About the House</a><a href="nft.html" style="color:#e3990a;border-bottom:1px solid #e3990a;padding:10px 0">NFTs</a><a href="#editorial">Editorial</a><a href="#collection">Collection</a><a href="partnership.html">Partnerships</a><a href="x-planner.html">X Planner</a></div><a class="btn mint-cta nav-cta" href="https://gravemint.io/mint/DEADfJLpRkbBuXEWWpEBXbzV31NE5DdAzmmibp7WVxow" target="_blank" rel="noopener" aria-label="Mint now on Gravemint"><span>MINT NOW</span><span class="gravemint-icon" aria-hidden="true"><img src="https://raw.githubusercontent.com/lootdepartment/LOOT-DEPARTMENT/main/images/gravemint-png.png" alt=""></span></a></nav></header>
@@ -124,7 +135,22 @@ footer{background:#080b10;border-top:1px solid var(--line);padding:36px 0;color:
 <section class="light" id="philosophy"><div class="wrap intro-grid"><div><div class="kicker">01 / The philosophy</div><h2 class="heading">Beyond the object.<br>Into the story.</h2><p class="intro-copy">We believe the most coveted things carry something deeper: <strong>identity, imagination and meaning.</strong></p><p class="body">LOOT DEPARTMENT brings the visual language of luxury fashion and the energy of collectible culture into one considered world. Every piece is an invitation to discover, express and connect.</p><a class="btn" href="history.html">Discover our point of view</a></div><div class="seal-card"><div class="seal-symbol">𓂀</div></div></div></section>
 <section class="dark" id="editorial"><div class="wrap"><div class="kicker">02 / The editorial world</div><h2 class="heading">Culture has many faces.<br>Every story has a soul.</h2><p class="body" style="color:#aaa49a;margin-top:20px">Our creative world is shaped by artists, performers, designers and cultural voices who move beyond the expected. We look for the defining moments, personal journeys and creative choices behind the image.</p><div class="story-grid"><article class="story"><div class="num">I.</div><h3>Portraits</h3><p>Character-led profiles that explore the people, influences and ambitions behind a public image.</p></article><article class="story"><div class="num">II.</div><h3>Culture files</h3><p>Visual stories connecting fashion, art, identity and the symbols that shape our time.</p></article><article class="story"><div class="num">III.</div><h3>Collectible icons</h3><p>Objects, editions and creative collaborations presented with an editorial eye.</p></article></div></div></section>
 <section class="campaign"><div class="wrap"><div class="kicker">03 / The creative ambition</div><h2 class="heading">Not made to follow.<br>Made to leave an impression.</h2><p>From cinematic campaigns to intimate storytelling, LOOT DEPARTMENT is building a platform for distinctive creative expression. Future celebrity features and collaborations will be announced only when officially confirmed — never implied.</p><a class="btn outline" href="history.html">Read the LOOT story</a></div></section>
-<section class="collection" id="collection"><div class="wrap collection-layout"><div class="collection-visual"></div><div class="collection-copy"><div class="kicker">04 / The collection</div><h2 class="heading">Find your treasure.<br>Make it mean something.</h2><p>Explore the LOOT DEPARTMENT collection on Gravemint. Discover the pieces, follow the department and join a community that values rarity, creativity and the thrill of the find.</p><div class="actions"><a class="btn" href="https://gravemint.io/mint/DEADfJLpRkbBuXEWWpEBXbzV31NE5DdAzmmibp7WVxow" target="_blank" rel="noopener">View on Gravemint ↗</a><a class="btn outline" href="https://discord.gg/tVfKKxx5R" target="_blank" rel="noopener">Join the community ↗</a></div></div></div></section>
+
+<section class="loot-feed" id="loot-feed" aria-labelledby="loot-feed-heading">
+ <div class="wrap">
+  <div class="feed-head">
+   <div><div class="kicker">05 / Follow the House</div><h2 class="heading" id="loot-feed-heading" style="color:var(--ivory)">THE LOOT <em style="color:var(--gold);font-weight:400">FEED.</em></h2></div>
+   <p>Fashion, faces, campaigns and culture. Step inside the world of LOOT DEPARTMENT and discover what is happening across the House.</p>
+  </div>
+  <div class="feed-frame">
+   <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/thehouseofloot/" data-instgrm-version="14" style="background:#fff;border:0;border-radius:3px;box-shadow:none;margin:0;max-width:760px;min-width:280px;padding:0;width:100%">
+    <a href="https://www.instagram.com/thehouseofloot/" target="_blank" rel="noopener">View @thehouseofloot on Instagram</a>
+   </blockquote>
+  </div>
+  <div class="feed-follow"><a class="btn" href="https://www.instagram.com/thehouseofloot/" target="_blank" rel="noopener">Follow @thehouseofloot ↗</a></div>
+ </div>
+</section>
+\n<section class="collection" id="collection"><div class="wrap collection-layout"><div class="collection-visual"></div><div class="collection-copy"><div class="kicker">04 / The collection</div><h2 class="heading">Find your treasure.<br>Make it mean something.</h2><p>Explore the LOOT DEPARTMENT collection on Gravemint. Discover the pieces, follow the department and join a community that values rarity, creativity and the thrill of the find.</p><div class="actions"><a class="btn" href="https://gravemint.io/mint/DEADfJLpRkbBuXEWWpEBXbzV31NE5DdAzmmibp7WVxow" target="_blank" rel="noopener">View on Gravemint ↗</a><a class="btn outline" href="https://discord.gg/tVfKKxx5R" target="_blank" rel="noopener">Join the community ↗</a></div></div></div></section>
 <section class="quote"><div class="wrap"><div class="kicker">The department code</div><blockquote>“The object catches your eye.<br><em>The story gives you a reason to remember it.</em>”</blockquote><div class="kicker">GOALS — NOT PROMISES · COLLECT WITH INTENT</div></div></section>
 </main><footer><div class="wrap foot"><strong>LOOT DEPARTMENT</strong><span>THE ART OF COLLECTING · © <span id="year"></span></span><div class="footlinks"><a href="history.html">About the House</a><a href="x-planner.html">X Planner</a><a href="https://discord.gg/tVfKKxx5R">Community</a><a href="https://gravemint.io/mint/DEADfJLpRkbBuXEWWpEBXbzV31NE5DdAzmmibp7WVxow">Gravemint</a></div></div></footer>
-<script>document.getElementById('year').textContent=new Date().getFullYear()</script></body></html>
+<script>document.getElementById('year').textContent=new Date().getFullYear()</script><script async src="https://www.instagram.com/embed.js"></script>\n</body></html>
