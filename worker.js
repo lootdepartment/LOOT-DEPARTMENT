@@ -118,7 +118,6 @@ export default {
     }
 
     if (path === "/api/login" && request.method === "POST") {
-      if (!sameOrigin(request)) return json({ error: "Invalid origin" }, 403);
       let password = "";
       const contentType = request.headers.get("content-type") || "";
       try {
