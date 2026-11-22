@@ -121,16 +121,12 @@ export default {
       for (let i = 0; i < a.length; i++) diff |= a[i] ^ b[i];
       if (!password || diff !== 0) return loginPage("That password wasn't recognised. Try again.");
       const token = await createSession(env.SESSION_SECRET);
-      return Response.redirect(new URL("/x-planner.html", url), 303, {
-        headers: { "set-cookie": cookieHeader(token, SESSION_SECONDS), "cache-control": "no-store" },
-      });
+      return new Response(null, { status: 303, headers: { "location": new URL("/x-planner.html", url).toString(), "set-cookie": cookieHeader(token, SESSION_SECONDS), "cache-control": "no-store" } });
     }
 
     if (path === "/api/logout" && request.method === "POST") {
       if (!sameOrigin(request)) return json({ error: "Invalid origin" }, 403);
-      return Response.redirect(new URL("/staff-login", url), 303, {
-        headers: { "set-cookie": cookieHeader("", 0), "cache-control": "no-store" },
-      });
+      return new Response(null, { status: 303, headers: { "location": new URL("/staff-login", url).toString(), "set-cookie": cookieHeader("", 0), "cache-control": "no-store" } });
     }
 
     if (path === "/x-planner.html" || path.startsWith("/api/")) {
