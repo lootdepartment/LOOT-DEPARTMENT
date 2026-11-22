@@ -78,28 +78,25 @@ function cookieHeader(value, maxAge) {
 }
 
 function sameOrigin(request) {
-  const requestUrl = new URL(request.url);
+  const requestOrigin = new URL(request.url).origin;
   const origin = request.headers.get("Origin");
-
-  // Browsers normally send the origin for same-origin form submissions.
-  // Compare parsed origins so harmless formatting differences do not break login.
-  if (origin) {
-    if (origin === "null") return false;
-    try {
-      return new URL(origin).origin === requestUrl.origin;
-    } catch {
-      return false;
-    }
-  }
-
-  // Some clients omit Origin on a normal form POST; validate Referer instead.
   const referer = request.headers.get("Referer");
-  if (!referer) return true;
-  try {
-    return new URL(referer).origin === requestUrl.origin;
-  } catch {
-    return false;
+
+  // Accept a request only when at least one browser-supplied origin signal
+  // proves it came from this exact Worker origin. If both are present,
+  // reject only when neither matches.
+  let originMatches = false;
+  let refererMatches = false;
+
+  if (origin && origin !== "null") {
+    try { originMatches = new URL(origin).origin === requestOrigin; } catch {}
   }
+  if (referer) {
+    try { refererMatches = new URL(referer).origin === requestOrigin; } catch {}
+  }
+
+  if (origin || referer) return originMatches || refererMatches;
+  return false;
 }
 
 export default {
