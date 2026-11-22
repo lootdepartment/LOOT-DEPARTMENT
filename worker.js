@@ -87,7 +87,8 @@ export default {
     const url = new URL(request.url);
     const path = url.pathname;
 
-    if (!env.ADMIN_PASSWORD || !env.SESSION_SECRET) {
+    const isStaffRoute = path === "/staff-login" || path === "/staff-login/" || path === "/x-planner.html" || path.startsWith("/api/");
+    if (isStaffRoute && (!env.ADMIN_PASSWORD || !env.SESSION_SECRET)) {
       return new Response("Staff access is not configured yet. Add ADMIN_PASSWORD and SESSION_SECRET in Worker settings.", {
         status: 503,
         headers: { "content-type": "text/plain; charset=utf-8", "cache-control": "no-store" },
