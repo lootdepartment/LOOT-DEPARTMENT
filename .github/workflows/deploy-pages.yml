@@ -25,10 +25,14 @@ jobs:
         uses: actions/checkout@v4
       - name: Configure Pages
         uses: actions/configure-pages@v5
+      - name: Prepare public site (exclude private planner)
+        run: |
+          mkdir -p _site
+          rsync -a --exclude='x-planner.html' --exclude='worker.js' --exclude='wrangler.jsonc' --exclude='.assetsignore' --exclude='.git/' --exclude='.github/' --exclude='_site/' ./ _site/
       - name: Upload site
         uses: actions/upload-pages-artifact@v3
         with:
-          path: .
+          path: _site
       - name: Deploy
         id: deployment
         uses: actions/deploy-pages@v4
