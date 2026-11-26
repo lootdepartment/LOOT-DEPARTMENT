@@ -30,7 +30,7 @@ jobs:
           mkdir -p _site
           rsync -a --exclude='x-planner.html' --exclude='worker.js' --exclude='wrangler.jsonc' --exclude='.assetsignore' --exclude='.git/' --exclude='.github/' --exclude='_site/' ./ _site/
       - name: Upload site
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v4
         with:
           path: _site
       - name: Deploy
