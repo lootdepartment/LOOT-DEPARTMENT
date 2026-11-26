@@ -33,6 +33,9 @@ jobs:
         uses: actions/upload-pages-artifact@v4
         with:
           path: _site
+      # Give GitHub's artifact API a moment to index the uploaded Pages artifact.
+      - name: Wait for Pages artifact registration
+        run: sleep 10
       - name: Deploy
         id: deployment
         uses: actions/deploy-pages@v4
